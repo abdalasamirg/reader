@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reader</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles:wght@700&family=Inconsolata:wght@700&family=Kanit:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<!--created by abdala samir galal aka(Lu)-->
+
+<body>
+    <div class="side">
+        <div class="container">
+            <a href="index.html" style="text-decoration: none;">
+                <div class="row">
+                    <div class="col">HOME</div>
+                </div>
+            </a>
+            <a href="books/book.html" style="text-decoration: none;">
+                <div class="row">
+                    <div class="col">MY-LIBRARY</div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="content">
+        <textarea name="input" id="input" cols="30" rows="10"></textarea>
+        <div class="buttons">
+            <div class="row">
+
+                <button class="col" id="button">Play</button>
+                <button class="col" id="button2">Pause</button>
+                <button class="col" id="button3">Realode</button>
+                <button class="col" id="button3">Add The book</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script>
+    let input = document.querySelector("#input")
+    let button = document.querySelector("#button")
+    let button2 = document.querySelector("#button2")
+    let button3 = document.querySelector("#button3")
+    let speech = new SpeechSynthesisUtterance();
+    window.onload = function() {
+        window.speechSynthesis.cancel(speech)
+    }
+    button.onclick = function() {
+        speech.text = input.value;
+        window.speechSynthesis.speak(speech);
+        window.speechSynthesis.resume(speech);
+    }
+    button2.onclick = function() {
+        window.speechSynthesis.pause(speech);
+    }
+    button3.onclick = function() {
+        window.speechSynthesis.cancel(speech);
+        window.speechSynthesis.speak(speech);
+    }
+</script>
+
+</html>
